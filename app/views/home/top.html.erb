@@ -1,0 +1,48 @@
+<section class="section">
+	<% if current_user.present? %>
+		<div class="content_box center">
+			<div class="columns">
+				<div class="column">
+					<% @msgs.order("created_at desc").each do |m| %>
+						<%= l m.created_at, format: :long %><br />
+						<% if m.image.present? %>
+							<center><img src="<%= m.image.url %>" /><center>
+						<% end %>
+						<% if m.content.present? %>
+							<%= m.content %>
+						<% end %>
+						<% if m.status.present? %>
+							<%= Constants::STATUSES[m.status] %>
+						<% end %>
+						<div class="has-text-grey">
+							<%= m.user.user_name %>
+						</div>
+						<hr />
+					<% end %>
+					<%= paginate @msgs %>
+				</div>
+			</div>
+
+
+			<%= form_tag(search_path,:method => 'get') do %>
+  				<%= text_field_tag :keyword %>
+  				<%= submit_tag 'Search' %>
+			<% end %>
+
+			<%= form_for(@message) do |f| %>
+				<%= f.text_field :content %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
+				<%= f.file_field :image %>
+				<%= f.submit "送信" %>
+			<% end %>
+
+			<% Constants::STATUSES.each do |k, v| %>
+				<%= form_for(@message) do |f| %>
+					<%= f.hidden_field :user_id, value: current_user.id %>
+					<%= f.hidden_field :status, value: k %>
+					<%= f.submit v, class: "btn btn-large follow-btn" %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+</section>

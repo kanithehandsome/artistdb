@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pathy</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+    <style>
+      img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover; /* この一行を追加するだけ！ */
+      }
+      .center {
+        text-align: center;
+      }
+      .right {
+        text-align: right;
+      }
+      .footer {
+        padding: 1rem 1.5rem 1rem !important;
+      }
+   </style>
+  </head>
+
+  <body>
+    <header class="right">
+      <% if current_user.present? %>
+        <%= link_to '設定', "/users/sign_in" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'ログイン', "/users/sign_in" %>
+      <% end %>
+    </header>
+
+    <%= yield %>
+    <div class="footer center">
+      pathy 2018
+    </div>
+
+  </body>
+</html>

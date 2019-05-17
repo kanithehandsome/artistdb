@@ -1,0 +1,33 @@
+ja:
+  time:
+    formats:
+      default: ! '%Y/%m/%d'
+      long: ! '%Y年%m月%d日 %H時%M分'
+      short: ! '%m/%d'
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前"
+      next: "次"
+      truncate: "..."
+  users:
+    mailer:
+      confirmation_instructions:
+        subject: "アカウントの登録方法"
+        title: "ようこそ" 
+        confirm_explanation: "アカウント確認メールを以下のリンクから送信できます:"
+        confirm_link: "アカウントを確認する"
+      reset_password_instructions:
+        subject: "パスワードの再設定"
+        title: "こんにちは"
+        reset_password_explanation: "パスワードリセットのリクエストが行われました。以下のリンクをクリックしてパスワードを変更できます。"
+        reset_password_link: "パスワードを変更する"
+        please_ignore: "もしあなたがパスワードリセットをリクエストしていない場合は、このメールを無視して下さい。"
+        wont_change: "上記リンクをクリックして新しいパスワードを作成しない限り、パスワードは変更されません。"
+      unlock_instructions:
+        subject: "アカウントのロック解除"
+        title: "こんにちは"
+        locked_explanation: "ログイン失敗の回数が多すぎたために、あなたのアカウントはロックされました。"
+        unlock_explanation: "あなたのアカウントのロックを解除するためには、以下のリンクをクリックして下さい:"
+        unlock_link: "アカウントのロックを解除する"
